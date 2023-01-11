@@ -37,20 +37,30 @@ even possible.
 
 Intended for an Arduino Nano plus two small piezo speakers and 3 WS2812 LEDs. Powered by a small USB 2200 mAh power bank.
 To be installed in a medium-sized (2-3 foot) Hogwarts Express train model, such as:
+
   https://www.4dmodelkit.com/products/harry-potter-hogwarts-express
+  
   https://www.amazon.com/dp/B08LCK7H27
 
 Note that this sketch uses 26+K of program storage space, which is around 87% available of 30K max, plus 1.3+K (67+%) of dynamic
 memory from 2K max. It was hoped to include playback of some short audio samples (such as "Allll Aboooard!"), but they just won't fit.
 
 NOTE: To make Talkie louder, I hacked the Talkie.cpp file in in the Talkie library.
+
   https://github.com/ArminJo/Talkie/blob/master/src/Talkie.cpp
+  
 On my Mac: ~/Documents/Arduino/libraries/Talkie/src/Talkie.cpp
+
 Overriding line ~856 from:
+
   nextPwm = (u0 >> 2) + 0x80;
+  
 With these lines added below the #endif on line ~857:
+  
   int tPwm = ((int) u0 * 6) / 8;
+  
   nextPwm = tPwm + 0x80;
+  
 This does cause slight distortion of some words (notably sp5_DEPARTURE), but increases the volume of Talkie overall
 greatly. For this use, the tradeoff is worth it. Adjust the 6/8 ratio as needed. 5/8 was a little too quiet but
 distortion-free. 7/8 was slightly louder but much more distorted.
@@ -85,14 +95,14 @@ NOTES/TODOS:
   Yeah, "abort" sounds a lot like "aboard", right? Sure it does.
 
 PINS on Arduino Nano:
-  NOT USED: VIN: 4.5V battery +, ended up using USB power bank instead of batteries.
-  GND: Next to VIN. To breadboard for WS2812 string -
-  +5V: To breadboard for WS2812 string +
-  GND: Mozzi speaker -   GND on 6-pin header, pin closest to TX1.
-  D3:  Talkie speaker +
-  D6:  To breadboard for WS2812 string signal
-  D9:  Mozzi speaker +
-  D11: Talkie speaker inverted / -
+  - NOT USED: VIN: 4.5V battery +, ended up using USB power bank instead of batteries.
+  - GND: Next to VIN. To breadboard for WS2812 string -
+  - +5V: To breadboard for WS2812 string +
+  - GND: Mozzi speaker -   GND on 6-pin header, pin closest to TX1.
+  - D3:  Talkie speaker +
+  - D6:  To breadboard for WS2812 string signal
+  - D9:  Mozzi speaker +
+  - D11: Talkie speaker inverted / -
 
 Electrical filters:
 
