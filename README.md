@@ -1,6 +1,10 @@
 # hoggytrain
 Arduino Nano code using Mozzi, Talkie, and Adafruit NeoPixel libraries to provide music, sound effects, and flickering lights for a Hogwarts Express model train
 
+See this Mastodon post thread for more comments and pictures:
+
+  https://universeodon.com/@jovikowi/109666389610694605
+
 Give a Hogwarts Express model train some sounds and lights: station announcements, steam train chuff-chuff sounds,
 plus a snippet of familiar melodies.
 
